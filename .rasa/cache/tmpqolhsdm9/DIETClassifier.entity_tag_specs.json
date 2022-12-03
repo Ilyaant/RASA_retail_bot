@@ -1,0 +1,44 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-color",
+      "2": "I-color",
+      "3": "L-color",
+      "4": "U-color",
+      "5": "B-length",
+      "6": "I-length",
+      "7": "L-length",
+      "8": "U-length",
+      "9": "B-lenth",
+      "10": "I-lenth",
+      "11": "L-lenth",
+      "12": "U-lenth",
+      "13": "B-negation",
+      "14": "I-negation",
+      "15": "L-negation",
+      "16": "U-negation",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-color": 1,
+      "I-color": 2,
+      "L-color": 3,
+      "U-color": 4,
+      "B-length": 5,
+      "I-length": 6,
+      "L-length": 7,
+      "U-length": 8,
+      "B-lenth": 9,
+      "I-lenth": 10,
+      "L-lenth": 11,
+      "U-lenth": 12,
+      "B-negation": 13,
+      "I-negation": 14,
+      "L-negation": 15,
+      "U-negation": 16,
+      "O": 0
+    },
+    "num_tags": 17
+  }
+]
