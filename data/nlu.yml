@@ -254,6 +254,11 @@ nlu:
       - speak with human
       - consult with expert
       - ask expert
+  - intent: provide_feedback
+    examples: |
+      - feedback
+      - I want to provide feedback
+      - provide feedback
 
   # - regex: name
   #   examples: |

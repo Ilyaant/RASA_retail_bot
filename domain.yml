@@ -22,6 +22,7 @@ intents:
   - consult_expert
   - my_name
   - my_phone
+  - provide_feedback
 entities:
   - email
   - color
