@@ -6,6 +6,7 @@ from rasa_sdk.events import FollowupAction
 from rasa_sdk.events import BotUttered
 import sqlite3
 from datetime import datetime as dt
+import uuid
 
 # change this to the location of your SQLite file
 path_to_db = "actions/example.db"
@@ -348,3 +349,55 @@ class ConsultClient(Action):
             dispatcher.utter_message('Please, enter a valid phone number')
             connection.close()
             return []
+
+
+class OrderShoes(Action):
+    def name(self) -> Text:
+        return "action_order_shoes"
+
+    def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+
+        size = float(tracker.get_slot("size"))
+        color = str(tracker.get_slot("color"))
+        email = str(tracker.get_slot("email"))
+        type_del = str(tracker.get_slot("type_del"))
+        date = dt.now().strftime('%Y-%m-%d')
+        id = uuid.uuid1().int
+        status = ''
+        if type_del == 'self':
+            status = 'Delivering to shop'
+        else:
+            status = 'Delivering to address'
+
+        connection = sqlite3.connect(path_to_db)
+        cursor = connection.cursor()
+
+        # get slots and save as tuple
+        shoe = [(color), (size)]
+
+        # place cursor on correct row based on search criteria
+        cursor.execute(
+            "SELECT * FROM inventory WHERE color=? AND size=?", shoe)
+
+        # retrieve sqlite row
+        data_row = cursor.fetchone()
+
+        if data_row:
+            new_order = (date, id, email, color, size, status)
+            connection.execute(
+                'INSERT INTO orders VALUES (?,?,?,?,?,?)', new_order)
+            dispatcher.utter_message(template="Your order is created!")
+            connection.close()
+            slots_to_reset = ["size", "color"]
+            return [SlotSet(slot, None) for slot in slots_to_reset]
+        else:
+            # provide out of stock
+            dispatcher.utter_message(template="utter_no_stock")
+            connection.close()
+            slots_to_reset = ["size", "color"]
+            return [SlotSet(slot, None) for slot in slots_to_reset]

@@ -5,10 +5,23 @@ stories:
       - intent: greet
       - action: utter_greet
 
+  # - story: order shoes
+  #   steps:
+  #     - intent: order_shoes
+  #     - action: utter_order_shoes
+
   - story: order shoes
     steps:
       - intent: order_shoes
-      - action: utter_order_shoes
+      - action: utter_ask_order_form_size
+      - intent: inform
+      - action: utter_ask_order_form_color
+      - intent: inform
+      - action: utter_ask_order_form_email
+      - intent: inform
+      - action: utter_ask_order_form_type_del
+      - intent: inform
+      - action: action_order_shoes
 
   # cancel stories
 

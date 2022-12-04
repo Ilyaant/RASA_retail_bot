@@ -195,3 +195,10 @@ rules:
   #     - action: consult_form
   #     - active_loop: consult_form
   #     - action: action_consult_client
+
+  # - rule: Order shoes
+  #   steps:
+  #     - intent: order_shoes
+  #     - action: order_form
+  #     - active_loop: order_form
+  #     - action: action_order_shoes

@@ -30,6 +30,9 @@ entities:
   - length
   - name
   - phone
+  - type_del
+  - address
+  - size
 slots:
   length:
     type: float
@@ -83,13 +86,25 @@ slots:
       - type: from_entity
         entity: email
   size:
-    type: text
-    influence_conversation: false
+    type: float
+    min_value: 4
+    max_value: 14
     mappings:
-      - entity: number
+      - entity: size
         type: from_entity
-        conditions:
-          - active_loop: product_stock_form
+  type_del:
+    type: categorical
+    values:
+      - delivery
+      - self
+    mappings:
+      - type: from_entity
+        entity: type_del
+  address:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: address
   rating:
     type: text
     influence_conversation: false
@@ -218,14 +233,27 @@ responses:
     - text: You're in luck! We have those in stock.
   utter_no_stock:
     - text: Sorry, seems like we don't have those shoes.
-  utter_order_shoes:
-    - text: Sorry, I can't actually help you order the shoes. Please visit our site to buy some nice shoes! I can help you check inventory, see the status of an order or even make a change to that order.
+  # utter_order_shoes:
+  #   - text: Sorry, I can't actually help you order the shoes. Please visit our site to buy some nice shoes! I can help you check inventory, see the status of an order or even make a change to that order.
   utter_ask_foot:
     - text: Please, type your foot length in cm with one decimal place.
   utter_ask_consult_form_name:
     - text: Please, type your name.
   utter_ask_consult_form_phone:
-    - text: Please, type your phone number starting with "+7" or "8".
+    - text: Please, type your phone number starting with "8".
+  utter_ask_order_form_size:
+    - text: What size do you want?
+  utter_ask_order_form_color:
+    - text: What color do you want?
+  utter_ask_order_form_email:
+    - text: What is your email?
+  utter_ask_order_form_type_del:
+    - buttons:
+        - payload: "delivery"
+          title: "Deliver to my address"
+        - payload: "self"
+          title: "Deliver to a shop"
+      text: What type of delivery do you want?
 actions:
   - action_product_search
   - action_survey_submit
@@ -235,12 +263,20 @@ actions:
   - action_give_name
   - action_consult_size
   - action_consult_client
+  - action_order_shoes
 forms:
   # consult_form:
   #   ignored_intents: []
   #   required_slots:
   #     - name
   #     - phone
+  # order_form:
+  #   ignored_intents: []
+  #   required_slots:
+  #     - size
+  #     - color
+  #     - email
+  #     - type_del
   order_status_form:
     ignored_intents: []
     required_slots:

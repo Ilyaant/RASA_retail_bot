@@ -59,6 +59,7 @@ nlu:
       - I'm looking for [orange](color) shoes
       - [brown](color)
       - [blue](color)
+      - color is [black](color)
       - it's 123
       - it's a@b.com
       - xyz@hulaloo.ai
@@ -68,11 +69,21 @@ nlu:
       - asdf@asdf.com
       - [Grey](color)
       - test@test.com
+      - [4](size)
+      - [6.5](size)
+      - [11](size)
+      - [delivery](type_del)
+      - [self](type_del)
   - intent: order_shoes
     examples: |
       - i want to buy shoes
       - no, don't want to do a return, want to purchase new shoes
       - since they're in stock, how about I place an order
+      - I want to make an order
+      - I want to buy shoes
+      - make order
+      - buy shoes
+      - order
   - intent: affirm
     examples: |
       - yes
@@ -232,6 +243,7 @@ nlu:
       - [25.5](length)
       - length of my foot is [30.0](length) cm
       - my foot is [28.3](lenth) cm long
+      - [27.0] cm
 
   - intent: consult_expert
     examples: |
@@ -269,9 +281,15 @@ nlu:
       - [Oscar Brown](name)
       - [Michael Peterson](name)
       - [David](name)
+      - my name is [Cole](name)
+      - my name is [Cole White](name)
+      - name is [Steve](name)
+      - name is [Daniel Snake](name)
 
   - intent: my_phone
     examples: |
       - [89215558844](phone)
       - [89161234567](phone)
       - [89145556472](phone)
+      - phone is [89263458790](phone)
+      - phone [89463454795](phone)
