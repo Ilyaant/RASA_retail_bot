@@ -92,7 +92,6 @@ stories:
       - intent: my_phone
       - action: action_consult_client
 
-  # TODO
   - story: Order feedback
     steps:
       - intent: provide_feedback

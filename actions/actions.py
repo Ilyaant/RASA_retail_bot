@@ -11,6 +11,7 @@ import uuid
 # change this to the location of your SQLite file
 path_to_db = "actions/example.db"
 path_to_cl_db = "actions/clients.db"
+path_to_ratings_db = "actions/rating.db"
 
 length_size = {
     23.0: 4,
@@ -334,6 +335,8 @@ class ConsultClient(Action):
         date = dt.now().strftime('%Y-%m-%d')
         time = dt.now().strftime('%H:%M:%S')
 
+        slots_to_reset = ["name", "phone"]
+
         if (phone[0] == '+' or phone[0] == '8') and (len(phone) == 12 or len(phone) == 11):
             new_client = (date, time, name, phone)
             cursor.execute('INSERT INTO clients VALUES (?,?,?,?)', new_client)
@@ -343,12 +346,12 @@ class ConsultClient(Action):
             dispatcher.utter_message(
                 'Thank you, please, wait for the call!')
 
-            return []
+            return [SlotSet(slot, None) for slot in slots_to_reset]
 
         else:
             dispatcher.utter_message('Please, enter a valid phone number')
             connection.close()
-            return []
+            return [SlotSet(slot, None) for slot in slots_to_reset]
 
 
 class OrderShoes(Action):
@@ -423,8 +426,36 @@ class CheckOrderNum(Action):
         cursor.execute(
             "SELECT * FROM orders WHERE order_number=? AND status=?", check)
         data_row = cursor.fetchone()
+        connection.close()
 
         if data_row:
             return [SlotSet("order_true", True)]
         else:
             return [SlotSet("order_true", False)]
+
+
+class RecordFeedback(Action):
+    def name(self) -> Text:
+        return "action_record_feedback"
+
+    def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+
+        service = int(tracker.get_slot("q_service"))
+        convenience = int(tracker.get_slot("q_convenience"))
+        shoes = int(tracker.get_slot("q_shoes"))
+        num = int(tracker.get_slot("order_num"))
+
+        new_rating = (num, service, convenience, shoes)
+        connection = sqlite3.connect(path_to_ratings_db)
+        cursor = connection.cursor()
+        cursor.execute('INSERT INTO ratings VALUES (?,?,?,?)', new_rating)
+        connection.commit()
+        dispatcher.utter_message('Thank you for your feedback!')
+        connection.close()
+
+        return []

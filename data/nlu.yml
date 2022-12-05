@@ -312,3 +312,21 @@ nlu:
       - number is [204753462346116665062609188398520658295](order_num)
       - [211536678217361836239870166586052897143](order_num)
       - [224426225579518486488634824832346024311](order_num)
+
+  - intent: give_mark
+    examples: |
+      - [1](q_service)
+      - [2](q_service)
+      - [3](q_service)
+      - [4](q_service)
+      - [5](q_service)
+      - [1](q_convenience)
+      - [2](q_convenience)
+      - [3](q_convenience)
+      - [4](q_convenience)
+      - [5](q_convenience)
+      - [1](q_shoes)
+      - [2](q_shoes)
+      - [3](q_shoes)
+      - [4](q_shoes)
+      - [5](q_shoes)

@@ -23,6 +23,7 @@ intents:
   - my_name
   - my_phone
   - provide_feedback
+  - give_mark
 entities:
   - email
   - color
@@ -288,6 +289,45 @@ responses:
     - text: Please, type your order number
   utter_no_feedback:
     - text: Sorry, we did not find the order :(
+  utter_ask_service:
+    - buttons:
+        - payload: "1"
+          title: "1"
+        - payload: "2"
+          title: "2"
+        - payload: "3"
+          title: "3"
+        - payload: "4"
+          title: "4"
+        - payload: "5"
+          title: "5"
+      text: On a scale of 1-5, how would you rate the quality of service?
+  utter_ask_convenience:
+    - buttons:
+        - payload: "1"
+          title: "1"
+        - payload: "2"
+          title: "2"
+        - payload: "3"
+          title: "3"
+        - payload: "4"
+          title: "4"
+        - payload: "5"
+          title: "5"
+      text: On a scale of 1-5, how would you rate the convenience of making an order?
+  utter_ask_quality_shoes:
+    - buttons:
+        - payload: "1"
+          title: "1"
+        - payload: "2"
+          title: "2"
+        - payload: "3"
+          title: "3"
+        - payload: "4"
+          title: "4"
+        - payload: "5"
+          title: "5"
+      text: On a scale of 1-5, how would you rate the quality of your new shoes?
 actions:
   - action_product_search
   - action_survey_submit
@@ -299,6 +339,7 @@ actions:
   - action_consult_client
   - action_order_shoes
   - action_check_order_num
+  - action_record_feedback
 forms:
   # consult_form:
   #   ignored_intents: []
