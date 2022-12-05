@@ -34,7 +34,36 @@ entities:
   - type_del
   - address
   - size
+  - order_num
+  - q_service
+  - q_convenience
+  - q_shoes
 slots:
+  order_num:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: order_num
+  order_true:
+    type: boolean
+    mappings:
+      - type: custom
+        action: action_check_order
+  q_service:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: q_service
+  q_convenience:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: q_convenience
+  q_shoes:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: q_shoes
   length:
     type: float
     min_value: 23.0
@@ -255,6 +284,10 @@ responses:
         - payload: "self"
           title: "Deliver to a shop"
       text: What type of delivery do you want?
+  utter_ask_order_num:
+    - text: Please, type your order number
+  utter_no_feedback:
+    - text: Sorry, we did not find the order :(
 actions:
   - action_product_search
   - action_survey_submit
@@ -265,6 +298,7 @@ actions:
   - action_consult_size
   - action_consult_client
   - action_order_shoes
+  - action_check_order_num
 forms:
   # consult_form:
   #   ignored_intents: []

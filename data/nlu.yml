@@ -298,3 +298,17 @@ nlu:
       - [89145556472](phone)
       - phone is [89263458790](phone)
       - phone [89463454795](phone)
+
+  - intent: provide_feedback
+    examples: |
+      - I want to provide feedback
+      - provide feedback
+      - give feedback
+      - wanna give feedback
+
+  - intent: inform_order_num
+    examples: |
+      - number [190878711119303724975575472151790414199](order_num)
+      - number is [204753462346116665062609188398520658295](order_num)
+      - [211536678217361836239870166586052897143](order_num)
+      - [224426225579518486488634824832346024311](order_num)

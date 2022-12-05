@@ -74,7 +74,6 @@ pamqp==2.3.0
 partd==1.2.0
 pathspec==0.8.1
 Pillow==8.0.1
-pkg_resources==0.0.0
 prompt-toolkit==2.0.10
 protobuf==3.14.0
 psycopg2-binary==2.8.6
@@ -150,7 +149,6 @@ typing-utils==0.1.0
 tzlocal==2.1
 ujson==3.2.0
 urllib3==1.26.9
-uvloop==0.14.0
 wcwidth==0.2.5
 webexteamssdk==1.6
 websockets==10.3

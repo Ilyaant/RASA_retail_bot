@@ -389,9 +389,10 @@ class OrderShoes(Action):
 
         if data_row:
             new_order = (date, id, email, color, size, status)
-            connection.execute(
+            cursor.execute(
                 'INSERT INTO orders VALUES (?,?,?,?,?,?)', new_order)
             dispatcher.utter_message(template="Your order is created!")
+            connection.commit()
             connection.close()
             slots_to_reset = ["size", "color"]
             return [SlotSet(slot, None) for slot in slots_to_reset]
@@ -401,3 +402,29 @@ class OrderShoes(Action):
             connection.close()
             slots_to_reset = ["size", "color"]
             return [SlotSet(slot, None) for slot in slots_to_reset]
+
+
+class CheckOrderNum(Action):
+    def name(self) -> Text:
+        return "action_check_order_num"
+
+    def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+
+        num = int(tracker.get_slot("order_num"))
+        status = 'Finished'
+        check = [(num), (status)]
+        connection = sqlite3.connect(path_to_db)
+        cursor = connection.cursor()
+        cursor.execute(
+            "SELECT * FROM orders WHERE order_number=? AND status=?", check)
+        data_row = cursor.fetchone()
+
+        if data_row:
+            return [SlotSet("order_true", True)]
+        else:
+            return [SlotSet("order_true", False)]
