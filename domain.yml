@@ -47,10 +47,10 @@ slots:
       - type: from_entity
         entity: order_num
   order_true:
-    type: boolean
+    type: bool
     mappings:
       - type: custom
-        action: action_check_order
+        action: action_check_order_num
   q_service:
     type: text
     influence_conversation: false

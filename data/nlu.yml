@@ -59,6 +59,7 @@ nlu:
       - I'm looking for [orange](color) shoes
       - [brown](color)
       - [blue](color)
+      - color [red](color)
       - color is [black](color)
       - it's 123
       - it's a@b.com
@@ -72,6 +73,8 @@ nlu:
       - [4](size)
       - [6.5](size)
       - [11](size)
+      - i want size [5.5](size)
+      - size [7.0](size) would be nice
       - [delivery](type_del)
       - [self](type_del)
   - intent: order_shoes
