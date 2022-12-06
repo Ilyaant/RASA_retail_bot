@@ -75,11 +75,19 @@ slots:
   name:
     type: text
     mappings:
+      - entity: name
+        type: from_entity
+        conditions:
+          - active_loop: consult_form
       - type: from_entity
         entity: name
   phone:
     type: text
     mappings:
+      - entity: phone
+        type: from_entity
+        conditions:
+          - active_loop: consult_form
       - type: from_entity
         entity: phone
   color:
@@ -271,7 +279,7 @@ responses:
   utter_ask_consult_form_name:
     - text: Please, type your name.
   utter_ask_consult_form_phone:
-    - text: Please, type your phone number starting with "8".
+    - text: Please, type your phone number starting with 8.
   utter_ask_order_form_size:
     - text: What size do you want?
   utter_ask_order_form_color:
@@ -341,11 +349,11 @@ actions:
   - action_check_order_num
   - action_record_feedback
 forms:
-  # consult_form:
-  #   ignored_intents: []
-  #   required_slots:
-  #     - name
-  #     - phone
+  consult_form:
+    ignored_intents: []
+    required_slots:
+      - name
+      - phone
   # order_form:
   #   ignored_intents: []
   #   required_slots:

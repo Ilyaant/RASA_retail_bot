@@ -189,12 +189,12 @@ rules:
       - active_loop: null
       - action: action_survey_submit
 
-  # - rule: Consult with a human
-  #   steps:
-  #     - intent: consult_expert
-  #     - action: consult_form
-  #     - active_loop: consult_form
-  #     - action: action_consult_client
+  - rule: Consult with a human
+    steps:
+      - intent: consult_expert
+      - action: consult_form
+      - active_loop: consult_form
+      - action: action_consult_client
 
   # - rule: Order shoes
   #   steps:

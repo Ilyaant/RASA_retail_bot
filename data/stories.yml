@@ -83,14 +83,14 @@ stories:
       - intent: my_size
       - action: action_consult_size
 
-  - story: Consult with a human
-    steps:
-      - intent: consult_expert
-      - action: utter_ask_consult_form_name
-      - intent: my_name
-      - action: utter_ask_consult_form_phone
-      - intent: my_phone
-      - action: action_consult_client
+  # - story: Consult with a human
+  #   steps:
+  #     - intent: consult_expert
+  #     - action: utter_ask_consult_form_name
+  #     - intent: my_name
+  #     - action: utter_ask_consult_form_phone
+  #     - intent: my_phone
+  #     - action: action_consult_client
 
   - story: Order feedback
     steps:
