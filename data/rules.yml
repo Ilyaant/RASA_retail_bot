@@ -218,3 +218,19 @@ rules:
   #     - action: order_form
   #     - active_loop: order_form
   #     - action: action_order_shoes
+
+  - rule: Activate form for order shoes
+    steps:
+      - intent: order_shoes
+      - action: action_deactivate_loop
+      - active_loop: null
+      - action: order_form
+      - active_loop: order_form
+
+  - rule: Submit order
+    condition:
+      - active_loop: order_form
+    steps:
+      - action: order_form
+      - active_loop: null
+      - action: action_order_shoes

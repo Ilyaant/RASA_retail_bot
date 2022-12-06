@@ -104,6 +104,7 @@ slots:
         type: from_entity
         conditions:
           - active_loop: product_stock_form
+          - active_loop: order_form
       - type: from_entity
         entity: color
   email:
@@ -117,6 +118,7 @@ slots:
             requested_slot: email
           - active_loop: cancel_form
           - active_loop: product_updates_form
+          - active_loop: order_form
       - intent:
           - inform
         type: from_text
@@ -131,20 +133,24 @@ slots:
       - type: from_entity
         entity: email
   size:
-    type: float
-    min_value: 4
-    max_value: 14
+    type: text
+    influence_conversation: false
     mappings:
-      - entity: size
+      - entity: number
         type: from_entity
+        conditions:
+          - active_loop: product_stock_form
+          - active_loop: order_form
   type_del:
     type: categorical
     values:
       - delivery
       - self
     mappings:
-      - type: from_entity
-        entity: type_del
+      - entity: type_del
+        type: from_entity
+        conditions:
+          - active_loop: order_form
   address:
     type: text
     mappings:
@@ -360,13 +366,13 @@ forms:
     required_slots:
       - name
       - phone
-  # order_form:
-  #   ignored_intents: []
-  #   required_slots:
-  #     - size
-  #     - color
-  #     - email
-  #     - type_del
+  order_form:
+    ignored_intents: []
+    required_slots:
+      - size
+      - color
+      - email
+      - type_del
   order_status_form:
     ignored_intents: []
     required_slots:
