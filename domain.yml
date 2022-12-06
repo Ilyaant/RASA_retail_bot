@@ -88,6 +88,12 @@ slots:
         type: from_entity
         conditions:
           - active_loop: consult_form
+      - intent:
+          - my_phone
+        type: from_text
+        conditions:
+          - active_loop: consult_form
+          - requested_slot: phone
       - type: from_entity
         entity: phone
   color:

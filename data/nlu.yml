@@ -298,6 +298,8 @@ nlu:
       - [89145556472](phone)
       - phone is [89263458790](phone)
       - phone [89463454795](phone)
+      - 89463844795
+      - 89513454795
 
   - intent: provide_feedback
     examples: |
