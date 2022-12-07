@@ -100,7 +100,7 @@ slots:
         type: from_text
         conditions:
           - active_loop: consult_form
-          - requested_slot: phone
+            requested_slot: phone
       - type: from_entity
         entity: phone
   color:
