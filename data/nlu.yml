@@ -310,14 +310,14 @@ nlu:
 
   - regex: order_num
     examples: |
-      - \d{39}
+      - \d{8}
 
   - intent: inform_order_num
     examples: |
-      - number [190878711119303724975575472151790414199](order_num)
-      - number is [204753462346116665062609188398520658295](order_num)
-      - [211536678217361836239870166586052897143](order_num)
-      - [224426225579518486488634824832346024311](order_num)
+      - number [19087871](order_num)
+      - number is [20475346](order_num)
+      - [21153667](order_num)
+      - [22442622](order_num)
 
   - intent: give_mark
     examples: |

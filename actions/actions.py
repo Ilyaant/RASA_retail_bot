@@ -371,6 +371,8 @@ class OrderShoes(Action):
         type_del = str(tracker.get_slot("type_del"))
         date = dt.now().strftime('%Y-%m-%d')
         id = uuid.uuid1().int
+        id_str = str(id)
+        id = int(id_str[0:8])
         status = ''
         if type_del == 'self':
             status = 'Delivering to shop'
