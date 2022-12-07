@@ -210,6 +210,8 @@ rules:
     steps:
       - action: consult_form
       - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
       - action: action_consult_client
 
   # - rule: Order shoes
