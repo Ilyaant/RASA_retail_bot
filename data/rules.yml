@@ -236,3 +236,46 @@ rules:
       - action: order_form
       - active_loop: null
       - action: action_order_shoes
+
+  - rule: Activate form for checking order
+    steps:
+      - intent: provide_feedback
+      - action: action_deactivate_loop
+      - active_loop: null
+      - action: check_order_form
+      - active_loop: check_order_form
+
+  - rule: Submit check order form and activate feedback form
+    condition:
+      - active_loop: check_order_form
+    steps:
+      - action: check_order_form
+      - active_loop: null
+      - action: action_check_order_num
+      - slot_was_set:
+          - order_true: True
+      - action: action_deactivate_loop
+      - active_loop: null
+      - action: feedback_form
+      - active_loop: feedback_form
+
+  - rule: Submit feedback form
+    condition:
+      - active_loop: feedback_form
+    steps:
+      - action: feedback_form
+      - active_loop: null
+      - action: action_record_feedback
+
+  - rule: Submit check order form false
+    condition:
+      - active_loop: check_order_form
+    steps:
+      - action: check_order_form
+      - active_loop: null
+      - action: action_check_order_num
+      - slot_was_set:
+          - order_true: False
+      - action: action_deactivate_loop
+      - active_loop: null
+      - action: utter_no_feedback

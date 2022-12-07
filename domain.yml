@@ -44,6 +44,16 @@ slots:
     type: text
     influence_conversation: false
     mappings:
+      - entity: order_num
+        type: from_entity
+        conditions:
+          - active_loop: check_order_form
+      - intent:
+          - inform_order_num
+        type: from_text
+        conditions:
+          - active_loop: check_order_form
+            requested_slot: order_num
       - type: from_entity
         entity: order_num
   order_true:
@@ -312,11 +322,11 @@ responses:
         - payload: "self"
           title: "Deliver to a shop"
       text: What type of delivery do you want?
-  utter_ask_order_num:
+  utter_ask_check_order_form_order_num:
     - text: Please, type your order number
   utter_no_feedback:
     - text: Sorry, we did not find the order :(
-  utter_ask_service:
+  utter_ask_feedback_form_q_service:
     - buttons:
         - payload: "1"
           title: "1"
@@ -329,7 +339,7 @@ responses:
         - payload: "5"
           title: "5"
       text: On a scale of 1-5, how would you rate the quality of service?
-  utter_ask_convenience:
+  utter_ask_feedback_form_q_convenience:
     - buttons:
         - payload: "1"
           title: "1"
@@ -342,7 +352,7 @@ responses:
         - payload: "5"
           title: "5"
       text: On a scale of 1-5, how would you rate the convenience of making an order?
-  utter_ask_quality_shoes:
+  utter_ask_feedback_form_q_shoes:
     - buttons:
         - payload: "1"
           title: "1"
@@ -384,6 +394,16 @@ forms:
     ignored_intents: []
     required_slots:
       - email
+  check_order_form:
+    ignored_intents: []
+    required_slots::
+      - order_num
+  feedback_form:
+    ignored_intents: []
+    required_slots:
+      - q_service
+      - q_convenience
+      - q_shoes
   cancel_form:
     ignored_intents: []
     required_slots:
