@@ -396,7 +396,7 @@ forms:
       - email
   check_order_form:
     ignored_intents: []
-    required_slots::
+    required_slots:
       - order_num
   feedback_form:
     ignored_intents: []
