@@ -1,0 +1,13 @@
+{
+  "rule_only_slots": [
+    "survey_complete",
+    "order_true"
+  ],
+  "rule_only_loops": [
+    "check_order_form",
+    "order_form",
+    "survey_form",
+    "consult_form",
+    "feedback_form"
+  ]
+}

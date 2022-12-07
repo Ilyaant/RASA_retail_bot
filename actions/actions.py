@@ -460,4 +460,6 @@ class RecordFeedback(Action):
         dispatcher.utter_message('Thank you for your feedback!')
         connection.close()
 
-        return [SlotSet("order_num", None)]
+        slots_to_reset = ["q_service", "q_convenience", "q_shoes", "order_num"]
+
+        return [SlotSet(slot, None) for slot in slots_to_reset]
