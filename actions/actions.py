@@ -433,7 +433,7 @@ class CheckOrderNum(Action):
         if data_row:
             return [SlotSet("order_true", True)]
         else:
-            return [SlotSet("order_true", False)]
+            return [SlotSet("order_true", False), SlotSet("order_num", None)]
 
 
 class RecordFeedback(Action):
@@ -460,4 +460,4 @@ class RecordFeedback(Action):
         dispatcher.utter_message('Thank you for your feedback!')
         connection.close()
 
-        return []
+        return [SlotSet("order_num", None)]

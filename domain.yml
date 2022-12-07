@@ -65,18 +65,48 @@ slots:
     type: text
     influence_conversation: false
     mappings:
+      - entity: q_service
+        type: from_entity
+        conditions:
+          - active_loop: feedback_form
+      - intent:
+          - give_mark
+        type: from_text
+        conditions:
+          - active_loop: feedback_form
+            requested_slot: q_service
       - type: from_entity
         entity: q_service
   q_convenience:
     type: text
     influence_conversation: false
     mappings:
+      - entity: q_convenience
+        type: from_entity
+        conditions:
+          - active_loop: feedback_form
+      - intent:
+          - give_mark
+        type: from_text
+        conditions:
+          - active_loop: feedback_form
+            requested_slot: q_convenience
       - type: from_entity
         entity: q_convenience
   q_shoes:
     type: text
     influence_conversation: false
     mappings:
+      - entity: q_shoes
+        type: from_entity
+        conditions:
+          - active_loop: feedback_form
+      - intent:
+          - give_mark
+        type: from_text
+        conditions:
+          - active_loop: feedback_form
+            requested_slot: q_shoes
       - type: from_entity
         entity: q_shoes
   length:
