@@ -42,6 +42,7 @@ entities:
 slots:
   order_num:
     type: text
+    influence_conversation: false
     mappings:
       - type: from_entity
         entity: order_num
@@ -52,21 +53,25 @@ slots:
         action: action_check_order
   q_service:
     type: text
+    influence_conversation: false
     mappings:
       - type: from_entity
         entity: q_service
   q_convenience:
     type: text
+    influence_conversation: false
     mappings:
       - type: from_entity
         entity: q_convenience
   q_shoes:
     type: text
+    influence_conversation: false
     mappings:
       - type: from_entity
         entity: q_shoes
   length:
     type: float
+    influence_conversation: false
     min_value: 23.0
     max_value: 31.5
     mappings:
@@ -74,6 +79,7 @@ slots:
         entity: length
   name:
     type: text
+    influence_conversation: false
     mappings:
       - entity: name
         type: from_entity
@@ -83,6 +89,7 @@ slots:
         entity: name
   phone:
     type: text
+    influence_conversation: false
     mappings:
       - entity: phone
         type: from_entity
